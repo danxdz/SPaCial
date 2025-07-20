@@ -7,6 +7,9 @@ import tempfile
 import base64
 import random
 import bcrypt
+from pymongo import MongoClient
+import certifi
+
 
 
 # 1) Carrega URI diretamente
@@ -27,7 +30,8 @@ else:
 client = MongoClient(
     MONGO_URI,
     tls=bool(PEM_PATH),
-    tlsCertificateKeyFile=PEM_PATH
+    tlsCertificateKeyFile=PEM_PATH,
+    tlsCAFile=certifi.where()
 )
 
 def get_db():

@@ -49,7 +49,7 @@ def login_form(lang):
         return  # Stop here if logged in
 
     # Show login form
-    col1, col2, col3 = st.columns([3, 3, 5], gap="small")
+    col1, col2, col3 = st.columns([6, 6, 5], gap="small")
     username = col1.text_input(
         label=t("username", "Username"),
         placeholder=t("username", "Username"),
