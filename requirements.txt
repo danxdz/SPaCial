@@ -30,4 +30,4 @@ easyocr==1.7.1 # A recent stable version of EasyOCR
 # Pytesseract
 pytesseract==0.3.10
 
-plotly=6.2.0
+plotly==6.2.0
