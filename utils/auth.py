@@ -43,9 +43,9 @@ def login_form(lang):
         if st.button(t("logout", "Logout")):
             st.session_state.clear()
             if cookies.ready():
-                cookies["user"] = None
+                cookies["user"] = lang("guest","Guest")
                 cookies.save()
-            st.experimental_rerun()
+            st.rerun()
         return  # Stop here if logged in
 
     # Show login form
@@ -73,7 +73,7 @@ def login_form(lang):
             if cookies.ready():
                 cookies["user"] = json.dumps(st.session_state["user"])
                 cookies.save()
-            st.experimental_rerun()
+            st.rerun()
         else:
             st.error(t("invalid_credentials", "Invalid credentials."))
 

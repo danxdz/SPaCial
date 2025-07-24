@@ -97,7 +97,7 @@ def app(lang, filters):
                     updates += 1
             if updates:
                 st.success(lang("products_updated", f"{updates} products updated!"))
-                st.experimental_rerun()
+                st.rerun()
             else:
                 st.info(lang("no_changes", "No changes to save."))
 
@@ -141,7 +141,7 @@ def app(lang, filters):
                             {"$set": {"image_path": new_name}}
                         )
                         st.success(lang("image_updated","Image updated successfully!"))
-                        st.experimental_rerun()
+                        st.rerun()
                     else:
                         st.error(lang("select_image","Please choose a new image file."))
 
@@ -199,7 +199,7 @@ def app(lang, filters):
 
                     db.products.insert_one(new_doc)
                     st.success(lang("product_created","Product created successfully!"))
-                    st.experimental_rerun()
+                    st.rerun()
 
     # --- 7) Admin-only: Add New Family ---
     if st.session_state.get("user", {}).get("role") == "admin":
@@ -216,6 +216,6 @@ def app(lang, filters):
                     if family_name.strip():
                         db.families.insert_one({"name": family_name.strip()})
                         st.success(lang("family_created","Family created successfully!"))
-                        st.experimental_rerun()
+                        st.rerun()
                     else:
                         st.error(lang("fill_family_name","Please fill in the Family Name."))

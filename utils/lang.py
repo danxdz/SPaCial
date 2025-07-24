@@ -125,7 +125,7 @@ def init_language():
             st.session_state["lang_code"] = choice
             if "user" in st.session_state:
                 save_user_language(choice)
-            st.experimental_rerun()
+            st.rerun()
         
         # Return translator function
         translations = load_language_file(choice)

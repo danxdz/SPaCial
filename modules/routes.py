@@ -57,7 +57,7 @@ def app(lang, filters):
                     updates += 1
             if updates:
                 st.success(lang("routes_updated", f"{updates} routes updated!"))
-                st.experimental_rerun()
+                st.rerun()
             else:
                 st.info(lang("no_changes","No changes to save."))
     else:
@@ -77,7 +77,7 @@ def app(lang, filters):
                         "name": name.strip()
                     })
                     st.success(lang("route_created","Route created successfully!"))
-                    st.experimental_rerun()
+                    st.rerun()
 
     st.markdown("---")
 
@@ -132,7 +132,7 @@ def app(lang, filters):
                     updates += 1
             if updates:
                 st.success(lang("operations_updated", f"{updates} operations updated!"))
-                st.experimental_rerun()
+                st.rerun()
             else:
                 st.info(lang("no_changes","No changes to save."))
     else:
@@ -158,4 +158,4 @@ def app(lang, filters):
                         "step_number": step
                     })
                     st.success(lang("operation_created","Operation created successfully!"))
-                    st.experimental_rerun()
+                    st.rerun()

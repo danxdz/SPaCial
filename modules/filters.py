@@ -20,7 +20,9 @@ def get_global_filters(lang):
     ALL_PR  = lang("all_products",  "All Products")
 
     # — 1) Atelier
-    atelier_docs = list(db.ateliers.find({}))
+    
+    collection_name = "ateliers"
+    atelier_docs = list(db[collection_name].find({}))
     if not atelier_docs:
         st.warning(lang("no_ateliers", "No ateliers available."))
         return {"atelier_id": None, "family_id": None, "product_id": None}

@@ -116,22 +116,22 @@ def app(lang, filters):
         # ✏️ Edit
         if btns[0].button("✏️", key=f"edit_{c['_id']}"):
             st.session_state["edit_char"] = c
-            st.experimental_rerun()
+            st.rerun()
 
         # 🗑️ Delete
         if btns[1].button("🗑️", key=f"del_{c['_id']}"):
             db.characteristics.delete_one({"_id": c["_id"]})
-            st.experimental_rerun()
+            st.rerun()
 
         # 🚫 Disable / ✅ Enable
         if c.get("active", True):
             if btns[2].button("🚫", key=f"dis_{c['_id']}"):
                 db.characteristics.update_one({"_id": c["_id"]}, {"$set": {"active": False}})
-                st.experimental_rerun()
+                st.rerun()
         else:
             if btns[2].button("✅", key=f"en_{c['_id']}"):
                 db.characteristics.update_one({"_id": c["_id"]}, {"$set": {"active": True}})
-                st.experimental_rerun()
+                st.rerun()
 
         # 👁️ Preview annotation
         if btns[3].button("👁️", key=f"view_{c['_id']}"):
@@ -266,4 +266,4 @@ def app(lang, filters):
                     else:
                         db.characteristics.insert_one(doc)
                         st.success(lang("char_created", "Characteristic created!"))
-                    st.experimental_rerun()
+                    st.rerun()

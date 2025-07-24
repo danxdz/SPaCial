@@ -8,7 +8,9 @@ key = st.secrets["CRYPTO_KEY"].encode()
 cipher = Fernet(key)
 
 def encrypt(plain: str) -> bytes:
-    return cipher.encrypt(plain.encode())
+    if plain: # fix logout
+        return cipher.encrypt(plain.encode())
 
 def decrypt(token: bytes) -> str:
-    return cipher.decrypt(token).decode()
+    if token:
+        return cipher.decrypt(token).decode()
